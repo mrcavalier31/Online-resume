@@ -3,4 +3,6 @@
 My resume assignment built using html & css
 
 **live site**
-git 
+
+
+https://mrcavalier31.github.io/Online-resume/
