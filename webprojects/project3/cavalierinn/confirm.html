@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Thank you for contacting Cavalier Inn. We will follow up with availability and rates.">
+  <title>Request Received | Cavalier Inn</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Page-specific polish for confirmation summary */
+    .confirm-wrap{background:#fff;border:1px solid var(--edge);border-radius:var(--radius);padding:1rem;box-shadow:var(--shadow)}
+    .summary{width:100%;max-width:720px;margin:1rem auto;border-collapse:collapse;background:#fff}
+    .summary th,.summary td{border:1px solid var(--edge);padding:.6rem .8rem;vertical-align:top}
+    .summary th{width:35%;background:#fbf8f3;text-align:left}
+    .actions{display:flex;gap:.75rem;flex-wrap:wrap;margin:1rem 0}
+    .muted{opacity:.85}
+    .badge{display:inline-block;padding:.15rem .5rem;border:1px solid var(--edge);border-radius:.375rem;background:#faf6f0;margin:.1rem .25rem 0 0}
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header role="banner" class="site-header" aria-label="Site header">
+  <div class="brandbar">
+    <img src="img/cavalier_inn_logo.png" alt="Cavalier Inn logo" class="brand-logo">
+    <div class="divider" aria-hidden="true"></div>
+    <div class="brandtext">
+      <div class="brand-name">Cavalier Inn</div>
+      <div class="brand-loc">Branson Missouri</div>
+    </div>
+  </div>
+  <nav class="site-nav" aria-label="Primary">
+    <ul class="nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="rooms.html">Rooms &amp; Amenities</a></li>
+      <li><a href="request.html">Info Request</a></li>
+      <li><a href="confirm.html" aria-current="page">Confirmation</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main" tabindex="-1">
+  <section class="confirm-wrap">
+    <h2>Thank you—your request has been received.</h2>
+    <p class="muted">We’ll review availability for your dates and reply to <strong id="email_out">(your email)</strong> soon.</p>
+
+    <h3>Submitted Details</h3>
+    <table class="summary" aria-describedby="sum-note">
+      <tbody id="summary-body">
+        <!-- Populated by JS -->
+      </tbody>
+    </table>
+    <p id="sum-note" class="muted">If anything here looks off, you can go back and edit before we begin processing.</p>
+
+    <div class="actions">
+      <a href="request.html" class="btn secondary" id="edit-link">Edit Request</a>
+      <a href="index.html" class="btn">Return Home</a>
+    </div>
+  </section>
+
+  <section>
+    <details>
+      <summary>What happens next?</summary>
+      <p>Our team will check room availability for your dates, price your selected options, and email you with the best matches. If we need any clarification, we’ll reach out to the phone or email you provided.</p>
+    </details>
+  </section>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <p>&copy; <span id="year"></span> Cavalier Inn • 123 Timberline Rd, Branson, MO • (417) 555-0123</p>
+</footer>
+
+<script>
+  (function(){
+    const params = new URLSearchParams(window.location.search);
+    const get = key => params.get(key) || "";
+    const multi = key => params.getAll(key); // for checkboxes
+    
+    // Map labels to field keys (matching request.html form names/ids)
+    const fields = [
+      ["Full Name","name"],
+      ["Email","email"],
+      ["Phone","phone"],
+      ["Check in","checkin"],
+      ["Check out","checkout"],
+      ["Guests","guests"],
+      ["Preferred Room","room"],
+      ["Extras","extras"],
+      ["Amenities","amenities"], // may be multiple
+      ["Notes","notes"]
+    ];
+
+    // Helper to format values
+    const escape = (s) => (s||"").replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    const nice = (key,val) => {
+      if (key === "extras" && !val) return "None";
+      return val || "—";
+    };
+
+    // Build summary rows
+    const tbody = document.getElementById("summary-body");
+    fields.forEach(([label,key])=>{
+      let value = "";
+      if (key === "amenities"){
+        const vals = multi(key).filter(Boolean);
+        value = vals.length ? vals.map(v => '<span class="badge">'+ escape(v) +'</span>').join(" ") : "—";
+      } else {
+        value = nice(key, escape(get(key)));
+      }
+      const tr = document.createElement("tr");
+      const th = document.createElement("th");
+      th.scope = "row";
+      th.textContent = label;
+      const td = document.createElement("td");
+      td.innerHTML = value;
+      tr.appendChild(th);
+      tr.appendChild(td);
+      tbody.appendChild(tr);
+    });
+
+    // Reflect email in lead sentence if present
+    const emailOut = document.getElementById("email_out");
+    const emailVal = get("email");
+    if (emailVal){
+      emailOut.textContent = emailVal;
+    }
+
+    // Build an "Edit Request" link that preserves current values as query params
+    // (request.html would need JS to pre-fill from query; if not, the Back button may be easier.)
+    const edit = document.getElementById("edit-link");
+    edit.href = "request.html" + (params.toString() ? ("?" + params.toString()) : "");
+  })();
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

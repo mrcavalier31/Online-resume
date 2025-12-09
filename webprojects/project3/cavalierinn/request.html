@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Request information about availability and special packages at Cavalier Inn, a five‑star Ozarks retreat.">
+  <title>Info Request Form | Cavalier Inn</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<!-- HEADER: Sticky site header containing the brand bar and primary navigation. -->
+<header role="banner" class="site-header" aria-label="Site header">  <!-- Brand bar: logo (left), decorative divider, brand name + location (right). -->
+<div class="brandbar">    <img src="img/cavalier_inn_logo.png" alt="Cavalier Inn logo" class="brand-logo">    <div class="divider" aria-hidden="true"></div>    <div class="brandtext">      <div class="brand-name">Cavalier Inn</div>      <div class="brand-loc">Branson Missouri</div>    </div>  </div>  <!-- Primary navigation: appears below brand bar for clarity and screen-reader labeling. -->
+<nav class="site-nav" aria-label="Primary">    <ul class="nav">      <li><a href="index.html">Home</a></li>      <li><a href="rooms.html">Rooms &amp; Amenities</a></li>      <li><a href="request.html" aria-current="page">Info Request</a></li>    </ul>  </nav></header>
+
+<main id="main" tabindex="-1">
+
+<section>
+  <h2>Request Information</h2>
+  <p>Send us a few details and we’ll reply with availability and options.</p>
+
+<form class="bform" action="confirm.html" method="get" aria-describedby="privacy">
+    <fieldset>
+      <legend>Guest Info</legend>
+      <div class="field">
+        <label for="name">Full Name</label>
+        <input id="name" name="name" type="text" required autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required autocomplete="email">
+      </div>
+      <div class="field">
+        <label for="phone">Phone</label>
+        <input id="phone" name="phone" type="tel" autocomplete="tel">
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Stay Details</legend>
+      <div class="field">
+        <label for="checkin">Check in</label>
+        <input id="checkin" name="checkin" type="date" required>
+      </div>
+      <div class="field">
+        <label for="checkout">Check out</label>
+        <input id="checkout" name="checkout" type="date" required>
+      </div>
+      <div class="field">
+        <label for="guests">Guests</label>
+        <input id="guests" name="guests" type="number" min="1" max="6" value="2">
+      </div>
+
+      <div class="field">
+        <span class="label" id="room-label">Preferred Room</span>
+        <div role="group" aria-labelledby="room-label" class="choices">
+          <input type="radio" id="queen" name="room" value="Queen" checked>
+          <label for="queen">Queen Room</label>
+          <input type="radio" id="king" name="room" value="King">
+          <label for="king">King Suite</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="extras">Extras</label>
+        <select id="extras" name="extras">
+          <option value="">None</option>
+          <option value="champagne">Celebration Package</option>
+          <option value="trail">Trail Lunch Kit</option>
+          <option value="romance">Romance Bundle</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <span class="label">Amenities</span>
+        <div class="choices">
+          <input type="checkbox" id="parking" name="amenities" value="parking" checked>
+          <label for="parking">Free Parking</label>
+          <input type="checkbox" id="ev" name="amenities" value="ev">
+          <label for="ev">EV Charging</label>
+          <input type="checkbox" id="firepit" name="amenities" value="firepit">
+          <label for="firepit">Firepit</label>
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="field full">
+      <label for="notes">Questions or special requests</label>
+      <textarea id="notes" name="notes" rows="4"></textarea>
+    </div>
+
+    <p id="privacy">We respect your privacy. We’ll use your info only to respond to your request.</p>
+
+    <button class="btn" type="submit">Send Request</button>
+    <button class="btn secondary" type="reset">Clear</button>
+  </form>
+</section>
+
+</main>
+<!-- FOOTER: Contact details and auto-updating year for professionalism. -->
+<footer class="site-footer" role="contentinfo">
+  <p>&copy; <span id="year"></span> Cavalier Inn • 123 Timberline Rd, Branson, MO • (417) 555-0123</p>
+</footer>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

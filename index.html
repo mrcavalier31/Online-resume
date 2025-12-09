@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Robert Cavalier | Future Software and Web Developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+    <meta name="description" content="Online resume for Robert Cavalier, a future software and web developer with experience in hospitality, technology, and customer service.">
+    <meta name="author" content="Robert Cavalier">
+    <meta name="keywords" content="Robert Cavalier, web developer, software developer, resume, portfolio">
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <img src="images/headshot.jpeg" alt="Portrait of Robert Cavalier" class="profile-photo">
+
+            <div class="headline">
+                <h1>Robert Cavalier</h1>
+                <p class="tagline">Future Software and Web Developer</p>
+            </div>
+        </div>
+
+        <nav class="main-nav" aria-label="Main navigation">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+       
+        <section id="about" class="section">
+            <header>
+                <h2>About Me</h2>
+            </header>
+            <p>
+                I am an enthusiastic future software and web developer with a strong background in
+                hospitality, customer service, and technology. I am currently building my skills in
+                HTML, CSS, programming fundamentals, and problem solving while studying at Ozarks
+                Technical Community College.
+            </p>
+            <p>
+                My goal is to create useful, accessible websites and applications that make life easier for others.
+                I enjoy learning new tools, working with teams, and turning ideas into working projects.
+            </p>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section section-alt">
+            <header>
+                <h2>Skills</h2>
+            </header>
+            <ul class="skills-list">
+                <li>HTML5 and semantic, accessible markup</li>
+                <li>CSS for layout, typography, and responsive design</li>
+                <li>Basic C# / programming logic (loops, conditionals, methods)</li>
+                <li>Git and GitHub for version control</li>
+                <li>Strong communication and customer service</li>
+                <li>Problem solving and attention to detail</li>
+            </ul>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="section">
+            <header>
+                <h2>Experience</h2>
+            </header>
+
+
+            <article class="experience-item">
+                <h3>Student &amp; Aspiring Software and Web Developer</h3>
+                <p class="experience-dates">Ozarks Technical Community College &bull; 2024 &ndash; Present</p>
+                <ul>
+                    <li>Completed projects using HTML, CSS, and basic programming concepts.</li>
+                    <li>Built small console applications and web pages to practice logic and layout.</li>
+                    <li>Used GitHub to publish class assignments and track changes.</li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section section-alt">
+            <header>
+                <h2>Projects</h2>
+            </header>
+
+            <div class="projects-grid" aria-label="Featured projects">
+                <!-- Project 1: Pawfect Pet Care -->
+                <article class="project-card">
+                    <img src="images/project1.jpeg" alt="Screenshot of the Pawfect Pet Care website showing pet services" class="project-image">
+                    <h3>Pawfect Pet Care Website</h3>
+                    <p>
+                        pet care website that uses semantic HTML and basic CSS layout.
+                        The site includes navigation, service descriptions, images, and a simple responsive design
+                        so pet owners can easily find information on any device.
+                    </p>
+                    <p>
+                        <a href="webprojects/project1/" class="project-link">View Pawfect Pet Care project folder</a>
+                    </p>
+                </article>
+
+                <!-- Project 2: Branson Bait Co. -->
+                <article class="project-card">
+                    <img src="images/project2.jpeg" alt="Screenshot of the Branson Bait Co. website with bait products" class="project-image">
+                    <h3>Branson Bait Co. Website</h3>
+                    <p>
+                        A small business website for a bait shop in the Ozarks. This project focuses on clear product
+                        listings, readable typography, and simple visuals. It helped me practice working with images,
+                        lists, and alt text for accessibility.
+                    </p>
+                    <p>
+                        <a href="webprojects/project2/" class="project-link">View Branson Bait Co. project folder</a>
+                    </p>
+                </article>
+
+                <!-- Project 3: Cavalier Inn Resort Concept -->
+                <article class="project-card">
+                    <img src="images/project3.jpeg" alt="Screenshot of the Cavalier Inn resort concept website with a luxury theme" class="project-image">
+                    <h3>Cavalier Inn Resort Concept Site</h3>
+                    <p>
+                        A concept website for a luxury resort brand. This project uses a clean layout, strong headings,
+                        and consistent color choices inspired by high-end hotel websites. It allowed me to experiment
+                        with branding, sections, and simple responsive design.
+                    </p>
+                    <p>
+                        <a href="webprojects/project3/" class="project-link">View Cavalier Inn project folder</a>
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <header>
+                <h2>Contact</h2>
+            </header>
+            <p>If you would like to connect or learn more about my work, you can reach me at:</p>
+
+            <ul class="contact-list">
+                <li><strong>Email:</strong> <a href="mailto:Cras.rcavalier@gmail.com">Cras.rcavalier@gmail.com</a></li>
+                <li><strong>Phone:</strong> <a href="tel:15209795013">(520) 979-5013</a></li>
+                <li><strong>Location:</strong> Branson, Missouri</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; <span id="current-year"></span> Robert Cavalier. All rights reserved.</p>
+    </footer>
+
+    <script>
+    
+        const yearSpan = document.getElementById("current-year");
+        if (yearSpan) {
+            yearSpan.textContent = new Date().getFullYear();
+        }
+    </script>
+</body>
+</html>

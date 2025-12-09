@@ -1,0 +1,198 @@
+
+/* ---------------------------------------------------
+   Cavalier Resort — site styles
+--------------------------------------------------- */
+
+/* theme tokens */
+:root{
+  --bg:#f5f0e6;          /* parchment */
+  --ink:#2b241e;         /* dark walnut */
+  --accent:#6f4e37;      /* coffee brown */
+  --accent-2:#355e3b;    /* forest green */
+  --edge:#d7c9b8;        /* hairline border */
+  --radius: .4rem;
+  --shadow: 0 .125rem .5rem rgba(0,0,0,.12); /* base shadow token for mild elevation */
+  --shadow-lg: 0 .3rem .9rem rgba(0,0,0,.18); /* larger shadow for hover states */
+}
+
+*{ box-sizing:border-box } /* easier sizing model */
+html{ scroll-behavior:smooth } /* smooth in-page nav */
+
+body{
+  margin:0; /*removed default margin*/
+  font:16px/1.6 Georgia,"Times New Roman",serif; /* sets base font size, line height, and serif stack*/
+  color:var(--ink);
+  /* subtle diagonal paper texture; replace if you prefer a flat fill */
+  background: var(--bg), 
+    url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%228%22 height=%228%22><rect width=%228%22 height=%228%22 fill=%22%23f5f0e6%22/><path d=%22M0 8 L8 0%22 stroke=%22%23efe7db%22/></svg>') repeat;
+} /* used this tiny inline svg and it draws a second faint diagonal line, i did this to try to make it look more fancy */
+
+/* a11y: skip directly to main content when tabbing */
+.skip-link{ /* starts a skip link baseline */
+  position:absolute; left:-9999px; top:-9999px; /* visually hides off screen but keeps in bom for for screen readers or keyboard nav */
+}
+.skip-link:focus{ /* when focused by keyboard, it becomes visible */
+  left:1rem; top:1rem; background:#fff; padding:.5rem; /* moves it on screen near top-left and makes it readable on top of page content */
+  border:2px solid var(--accent); z-index:10; /* stronger focus style to keep it above other content */
+}
+
+/* ===== header & branding ===== */
+.site-header{ /* sticky header container*/
+  position:sticky; top:0; z-index:10; /*sticks to top during scroll, but stays above other content*/
+  background:#fff; color:#1a1a1a; /* white bar with dark text */
+  box-shadow: var(--shadow); /* subtle shadow for separation */
+}
+.brandbar{ /*row with logo/divider/text*/
+  display:flex; align-items:center; gap:1rem; /* horizontal layout, vertically centered, spaced out */
+  padding:.6rem 1rem; /* adds some breathing room inside the header */
+  border-bottom:2px solid #c9b26d; /* soft gold keyline under the brand bar */
+}
+.brand-logo{ width:72px; height:auto; vertical-align:middle } /* i did this to contrain the logo width, keep aspect ratio and make it align better */
+.divider{ width:1px; height:54px; background:#d2d2d2 } /* vertical divider line */
+.brandtext{ display:flex; flex-direction:column; justify-content:center } /* stacks the name and location vertically, centers them */
+.brand-name{ /* cavalier inn text */
+  font-family:"Playfair Display", Georgia, serif; /* elegant serif font  for cavalier inn */
+  font-weight:700; font-size:1.6rem; letter-spacing:.3px; /* bold, larger, spaced out */
+}
+.brand-loc{ /* secondary brand line (location) */
+  font-family:"Playfair Display", Georgia, serif; /* matches brand name font */
+  font-weight:500; font-variant:small-caps; letter-spacing:.6px; opacity:.9; /* medium weight, small caps, spaced out, slightly faded for a classic feel*/
+}
+
+/* nav bar lives under the brand row */
+.site-nav{ /* nav container */
+  background:#f9f9f9; /* light background for nav */
+  border-top:1px solid #fff; /* crisp highlight white line above nav */
+  border-bottom:1px solid #e9e9e9; /* soft shadow line below nav */
+}
+.nav{ /* list of links */
+  list-style:none; margin:0; padding:.35rem 1rem; /* this removes bullets and adds padding and normal spacing */
+  display:flex; gap:1rem; flex-wrap:wrap; /* horizontal layout with spacing, wraps on small screens */
+}
+.nav a{ /* link styles in the bar */
+  font-family:"Cinzel", Georgia, serif; font-weight:700; /* decorative serif font for nav links to give it a more ritzy feel */
+  color:#c8a45d; text-decoration:none; /* gold color, no underline */
+  text-shadow:0 0 1px #fff, 0 0 2px #fff; /* crisp white edge to keep the gold on a readable gray*/
+  padding:.35rem .6rem; border-radius:.25rem; /* clickable pill area */
+  border:1px solid transparent; transition:all .2s ease; /* smooth transition for hover/focus */
+}
+.nav a:hover, .nav a:focus{ /* hover and focus states */
+  background:#c0c0c0; color:#fff; border-color:#fff; text-shadow:0 0 3px #fff; /* silver pill wiith white text and a stronger white edge */
+}
+
+/* page frame */
+main{ max-width:1100px; margin:0 auto; padding:1rem } /* centers content, limits width, adds padding */
+
+/* ===== hero ===== */
+.hero{ position:relative } /* establishes a positioning context for the overlay text */
+.hero img{ width:100%; display:block } /* full-bleed image without inline gaps */
+.hero-copy{ /* dark overlay text box */
+  position:absolute; inset:auto 5% 10% 5%; /* positions the text box near the bottom, centered with side margins */
+  max-width:38rem; /* keeps the text box from getting too wide */
+  background:rgba(47,39,33,.75); color:#fff; /* i did this to make the textbox transulucent and keep the text readable */
+  padding:1rem; border:1px solid rgba(255,255,255,.15); border-radius:var(--radius); /* soft padding with a subtle edge and rounded corners */
+}
+
+/* ===== feature cards ===== */
+.features{ /*grid container for feature cards*/
+  display:grid; gap:1rem; padding:1rem; /* css grid with spacing and outer padding */
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); /* responsive columns that fit as many as possible, min 220px wide */
+}
+.features article{ /* individual feature card styles */
+  background:#fff; border:1px solid var(--edge); /* white card with a hardline border */
+  border-radius:var(--radius); padding:1rem; /* rounded corners with inner padding */
+}
+.features img{ /* card image styling */
+  width:100%; display:block; border-radius:.25rem; margin-bottom:.5rem; /* did this to fill the card width, remove inline gaps, round corners, and add spacing below */
+}
+
+/* ===== room grid (normalized thumbnails) ===== */
+.room-grid{ /* grid for room cards */
+  display:grid; gap:1rem; padding:1rem 0; /* grid with spacing but top/bottom padding only */
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); /* responsive columns that fit as many as possible, min 260px wide */
+}
+.room-grid figure{ /* each room card container */
+  margin:0; background:#fff; border:1px solid var(--edge); /* reset margin; white card with hairline border */
+  border-radius:var(--radius); overflow:hidden; /* clips image corners and overflow */
+}
+.room-grid img{ /* room thumbnail behavior */
+  width:100%; display:block; /* fills the card width, removes inline gaps */
+  aspect-ratio:4/3; object-fit:cover;  /* forces a consistent 4:3 window and crop as needed- no distortion; aligns the columns */
+}
+.room-grid figcaption{ padding:.75rem } /* text padding under the image */
+
+/* ===== rates table =====
+   width cap feels good at 520px; bump to 640px if content wraps */
+.rates{
+  width:100%; max-width:32.5rem; /* table cap at 520px for readability */
+  margin:.5rem auto 1rem; /* center table with top/bottom spacing */
+  background:#fff; border:1px solid var(--edge); /* white table with hairline border edge */
+  border-radius:calc(var(--radius) - .05rem); /* a very slight tighter rounding than cards */
+  overflow:hidden; border-collapse:collapse; /* clip rounded corners; Merge borders for cleaner grid */
+  font-size:.95rem; /* slightly smaller text for compactness */
+  box-shadow: var(--shadow); /* tiny elevation to match cards */
+}
+.rates th, .rates td{ /* cell styling ( headers and data) */
+  border:1px solid var(--edge); /* gold lines inside the table */
+  padding:.7rem .8rem; text-align:center; vertical-align:middle; /* more comfortable cell spacing; center content, aligns vertically */
+}
+.rates thead th{ background:#e3d6c2; font-weight:700; text-align:left } /* distinct header row, bold, left aligned labels */
+.rates tbody tr:nth-child(even){ background:#faf6f0 } /* subtle zebra striping for readability */
+.rates tfoot td{ background:#fbf8f3; font-style:italic; text-align:left } /* note/footer row with softer background, italic, left aligned */
+.rates th[scope="row"]{ text-align:left } /* row header cells left aligned to read like labels */
+.rates caption{ caption-side:top; font-weight:700; padding:.6rem } /* title above the table with weight and breathing room */
+
+/* ===== amenities ===== */
+.amenities{ /* default single-column layout */
+  list-style:disc inside; /* used bullets and keeps them inside content box */
+  margin:.5rem 0 2rem 0; /* space above and generous space below section */
+  padding-left:1rem; /* indent content slightly ( pairs inside of bullets) */
+}
+
+/* side-by-side wrapper for rates + amenities */
+.rates-amenities{ /* two column layout wrapper for side-by-side presentation */
+  display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:start; /* 50/50 columns with spacing; aligns to top */
+}
+@media (max-width:900px){ /* responsive rule for smaller screens just for practice */
+  .rates-amenities{ grid-template-columns:1fr } /* stack into a single column on narrow viewports */
+}
+
+/* ===== forms & buttons ===== */
+.bform{ /* form container styles*/
+  background:#fff; border:1px solid var(--edge); /* card-like form background and edge */
+  padding:1rem; border-radius:var(--radius); box-shadow: var(--shadow); /* comfortable padding, rounded corners, subtle elevation */
+}
+.field{ display:flex; flex-direction:column; gap:.25rem; margin:.6rem 0 } /* vertical label, input stack with small inner spacing and outer margin */
+.field .label{ font-weight:700 } /* emphasized label for more readability */
+.choices{ display:flex; flex-wrap:wrap; gap:1rem; align-items:center } /* arranges check boxes/radios horizontally wraps as needed */
+.full{ grid-column:1 / -1 } /* utility to span full width in a grid layout */
+
+.btn{ /* primary button base. */
+  display:inline-block; background:var(--accent-2); color:#fff; /* button box with green background and white text */
+  padding:.6rem 1rem; border-radius:.35rem; border:0; text-decoration:none; /* comfortable size rounded corners, removes default borders/underlines. */
+  transition:filter .15s ease; /* animate hover brightness smoothly. */
+}
+.btn:hover{ filter:brightness(1.05) } /* slightly brighten on hover */
+.btn.secondary{ background:var(--accent) } /* secondary button style with brown background */
+
+/* ===== image chrome (gold frames) ===== */
+.features img, .room-grid img, .bform img, figure img{ /* shared styling for images in cards and forms */
+  border:2px solid #e6d195; border-radius:6px; /* soft gold frame with rounding. */
+  box-shadow: var(--shadow); /* subtle depth */
+  transition:transform .25s ease, box-shadow .25s ease; /* smooth hover scale + shadow animations */
+}
+.features img:hover, .room-grid img:hover{ /* hover state for feature/ room images */
+  transform:scale(1.02); /* gentle zoom  to lift the photo slightly when you drag your mouse over it */
+  box-shadow: var(--shadow-lg); /* stronger shadow while hovering */
+}
+
+/* little spacing touches to spruce things up a bit */
+h3{ margin-top:1.5rem } /* adds breathing room before section headings */
+.site-footer{ padding:1rem; text-align:center; color:#3a312a } /* simple centered footer text with softer color */
+
+/* a11y: visible focus + reduced motion */
+:focus-visible{ outline:3px solid #c8a45d; outline-offset:2px } /* high contrast, brand coldred focus ring for keyboard users */
+@media (prefers-reduced-motion: reduce){  /* RESPECT! the OS/user motion preference */
+  html{ scroll-behavior:auto } /* disable smooth scrolling */
+  *{ animation:none !important; transition:none !important } /* disable all animations and transitions */
+}

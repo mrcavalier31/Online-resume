@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Cavalier Inn is a cozy five star retreat tucked privately in the heart of the Ozarks. Family vacation memories that bring guests back year after year.">
+  <title>Home | Cavalier Inn</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<!-- HEADER: Sticky site header containing the brand bar and primary navigation. -->
+<header role="banner" class="site-header" aria-label="Site header">  <!-- Brand bar: logo (left), decorative divider, brand name + location (right). -->
+<div class="brandbar">    <img src="img/cavalier_inn_logo.png" alt="Cavalier Inn logo" class="brand-logo">    <div class="divider" aria-hidden="true"></div>    <div class="brandtext">      <div class="brand-name">Cavalier Inn</div>      <div class="brand-loc">Branson Missouri</div>    </div>  </div>  <!-- Primary navigation: appears below brand bar for clarity and screen-reader labeling. -->
+<nav class="site-nav" aria-label="Primary">    <ul class="nav">      <li><a href="index.html" aria-current="page">Home</a></li>      <li><a href="rooms.html">Rooms &amp; Amenities</a></li>      <li><a href="request.html">Info Request</a></li>    </ul>  </nav></header>
+
+<main id="main" tabindex="-1">
+
+<!-- HERO: Large visual introduction with overlaid copy. -->
+<section class="hero" aria-label="Welcome">
+  <img src="img/ozark_hero_autumn.jpg" alt="Autumn forest with a secluded lodge in the Ozarks">
+  <div class="hero-copy">
+    <h2>Welcome to Cavalier Inn</h2>
+    <p>Secluded and serene, Cavalier Inn is a cozy five star retreat nestled privately in the heart of the Ozarks. Every stay is a story — where family vacation memories are made and cherished for generations. Guests return year after year, drawn by the warmth of familiar faces, the scent of morning coffee by the fire, and the timeless sense of belonging that only Cavalier Inn can offer.</p>
+    <a class="btn" href="rooms.html">Explore rooms</a>
+  </div>
+</section>
+
+<!-- FEATURES: Three cards highlighting breakfast, rooms, and Ozark views.  -->
+<section class="features" aria-label="Highlights">
+  <article>
+    <img src="img/breakfast.jpg" alt="Breakfast buffet with fruits, cheeses, and cold cuts">
+    <h3>Hearty Breakfast</h3>
+    <p>Locally sourced eggs, skillet potatoes, and house-made jams served daily in our sunlit dining room.</p>
+  </article>
+  <article>
+    <img src="img/room_queen.jpg" alt="Rustic queen room with leather chairs and wood beams">
+    <h3>Cozy Rooms</h3>
+    <p>Plush bedding, reclaimed wood accents, and modern comforts wrapped in rustic charm.</p>
+  </article>
+  <article>
+    <img src="img/ozark_card_river.jpg" alt="Ozark cabin surrounded by forest and river at sunset">
+    <h3>Ozark Views</h3>
+    <p>Step onto the deck for sweeping woodland vistas and the sound of songbirds at dawn.</p>
+  </article>
+</section>
+
+<!-- CTA: Clear call-to-action leading to the Info Request form. -->
+<section class="cta" aria-label="Plan your stay">
+  <h2>Plan your stay</h2>
+  <p>Tell us what you’re looking for and we’ll get right back to you.</p>
+  <a class="btn" href="request.html">Request info</a>
+</section>
+
+</main>
+<!-- FOOTER: Contact details and auto-updating year for professionalism. -->
+<footer class="site-footer" role="contentinfo">
+  <p>&copy; <span id="year"></span> Cavalier Inn • 123 Timberline Rd, Branson, MO • (417) 555-0123</p>
+</footer>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

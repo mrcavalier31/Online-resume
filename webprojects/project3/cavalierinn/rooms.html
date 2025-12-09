@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Rooms and amenities at Cavalier Inn—rustic luxury suites, queen rooms, pricing, and amenities in the Ozarks.">
+  <title>Rooms & Amenities | Cavalier Inn</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<!-- HEADER: Sticky site header containing the brand bar and primary navigation. -->
+<header role="banner" class="site-header" aria-label="Site header">  <!-- Brand bar: logo (left), decorative divider, brand name + location (right). -->
+<div class="brandbar">    <img src="img/cavalier_inn_logo.png" alt="Cavalier Inn logo" class="brand-logo">    <div class="divider" aria-hidden="true"></div>    <div class="brandtext">      <div class="brand-name">Cavalier Inn</div>      <div class="brand-loc">Branson Missouri</div>    </div>  </div>  <!-- Primary navigation: appears below brand bar for clarity and screen-reader labeling. -->
+<nav class="site-nav" aria-label="Primary">    <ul class="nav">      <li><a href="index.html">Home</a></li>      <li><a href="rooms.html" aria-current="page">Rooms &amp; Amenities</a></li>      <li><a href="request.html">Info Request</a></li>    </ul>  </nav></header>
+<!-- MAIN: Landmark region for keyboard users (skip‑link target). -->
+<main id="main" tabindex="-1">
+
+<section>
+  <h2>Rooms &amp; Amenities</h2>
+  <p>Choose from our thoughtfully appointed rooms. All stays include breakfast, parking, and Wi‑Fi.</p>
+
+  <div class="room-grid">
+    <figure>
+      <img src="img/room_queen.jpg" alt="Rustic queen room with leather chairs and wood beams">
+      <figcaption><strong>Queen Room</strong> — perfect for couples. Private bath, desk, and balcony.</figcaption>
+    </figure>
+    <figure>
+      <img src="img/room_king.jpg" alt="Rustic king suite with fireplace and lodge decor">
+      <figcaption><strong>King Suite</strong> — extra living area, fireplace, and claw‑foot tub.</figcaption>
+    </figure>
+  
+    <figure>
+      <img src="img/world_class_spa.jpeg" alt="a soothing spa room with a massage table and soft lighting">
+      <figcaption><strong>World class spa</strong> — restorative massages, aromatherapy, and wellness treatments inspired by the Ozarks.</figcaption>
+    </figure>
+  </div>
+
+  <div class="rates-amenities">
+  <section>
+  <h3>Nightly Rates</h3>
+  <!-- RATES TABLE: i used <thead>/<tbody>/<tfoot> for semantics; zebra striping via CSS for readability. -->
+<table class="rates" role="table" aria-describedby="rate-note">
+    <caption>Standard pricing (before taxes)</caption>
+    <thead>
+      <tr>
+        <th scope="col">Room Type</th>
+        <th scope="col">Weeknight</th>
+        <th scope="col">Weekend</th>
+        <th scope="col">Max Guests</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Queen Room</th>
+        <td>$399</td>
+        <td>$499</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <th scope="row">King Suite</th>
+        <td>$599</td>
+        <td>$699</td>
+        <td>5</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="4" id="rate-note">Add $20/night for peak season (May–Aug). Rates include breakfast and parking.</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  </section>
+  <section>
+  <h3>Amenities</h3>
+  <!-- AMENITIES in an unordered list -->
+<ul class="amenities">
+    <li>Free country breakfast</li>
+    <li>Complimentary WiFi</li>
+    <li>Outdoor firepit &amp; deck</li>
+    <li>EV charging station</li>
+    <li>Hiking trail access</li>
+  </ul>
+  </section>
+</div>
+</section>
+
+</main>
+<!-- FOOTER: Contact details with an auto updating year. -->
+<footer class="site-footer" role="contentinfo">
+  <p>&copy; <span id="year"></span> Cavalier Inn • 123 Timberline Rd, Branson, MO • (417) 555-0123</p>
+</footer>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
